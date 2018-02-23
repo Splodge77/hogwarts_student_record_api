@@ -20,9 +20,14 @@ const requestComplete = function(){
 const populateList = function(students){
   const ul = document.getElementById("student-list")
   students.forEach(function(student){
+    const img = document.createElement('img');
+    img.src = student.image;
+    img.alt = student.name;
+    img.height = '150';
     const li = document.createElement('li');
     li.innerText = student.name;
-    ul.appendChild(li);
+    ul.appendChild(img);
+    img.appendChild(li)
   });
 }
 
