@@ -14,20 +14,26 @@ const requestComplete = function(){
   if(this.status !== 200) return;
   const jsonString = this.responseText;
   const students = JSON.parse(jsonString);
-  populateList(students);
+  populateTable(students);
 };
 
-const populateList = function(students){
-  const ul = document.getElementById("student-list")
+const populateTable = function(students){
+  const table = document.getElementById("student-table")
   students.forEach(function(student){
+    const tr = document.createElement('tr');
+    const td = document.createElement('td');
     const img = document.createElement('img');
     img.src = student.image;
     img.alt = student.name;
     img.height = '150';
-    const li = document.createElement('li');
-    li.innerText = student.name;
-    ul.appendChild(img);
-    img.appendChild(li)
+    td.appendChild(img);
+    tr.appendChild(td);
+    table.appendChild(tr);
+    // const nameCell = document.createElement('td');
+    // li.innerText = student.name;
+    // table.appendChild(imageRow);
+    // img.appendChild(imageRow);
+    // imageRow.appendChild(nameCell);
   });
 }
 
